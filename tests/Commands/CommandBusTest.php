@@ -17,7 +17,7 @@ class CommandBusTest extends TestCase
 {
     use InteractsWithExceptionHandling;
 
-    public const UUID = 'cart-uuid';
+    public const UUID = '1537200202186752';
 
     /** @test */
     public function test_with_retry_middleware()
@@ -27,8 +27,8 @@ class CommandBusTest extends TestCase
         Fork::new()
             ->before(fn () => DB::connection('mysql')->reconnect())
             ->run(
-                fn () => $bus->dispatch(new AddItem('cart-uuid', 'item-1')),
-                fn () => $bus->dispatch(new AddItem('cart-uuid', 'item-2')),
+                fn () => $bus->dispatch(new AddItem('1537200202186752', 'item-1')),
+                fn () => $bus->dispatch(new AddItem('1537200202186752', 'item-2')),
             );
 
         $cart = Cart::retrieve(self::UUID);

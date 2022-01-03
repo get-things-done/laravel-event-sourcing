@@ -13,21 +13,21 @@ class EloquentStoredEventRepositoryTest extends TestCase
     {
         $eloquentStoredEventRepository = new EloquentStoredEventRepository();
 
-        $this->assertEquals(0, $eloquentStoredEventRepository->getLatestAggregateVersion('uuid-non-existing'));
+        $this->assertEquals(0, $eloquentStoredEventRepository->getLatestAggregateVersion('1537200202186750'));
 
-        $aggregateRoot = AccountAggregateRoot::retrieve('uuid-1');
-        $this->assertEquals(0, $eloquentStoredEventRepository->getLatestAggregateVersion('uuid-1'));
-
-        $aggregateRoot->addMoney(100)->persist();
-        $this->assertEquals(1, $eloquentStoredEventRepository->getLatestAggregateVersion('uuid-1'));
+        $aggregateRoot = AccountAggregateRoot::retrieve('1537200202186751');
+        $this->assertEquals(0, $eloquentStoredEventRepository->getLatestAggregateVersion('1537200202186751'));
 
         $aggregateRoot->addMoney(100)->persist();
-        $this->assertEquals(2, $eloquentStoredEventRepository->getLatestAggregateVersion('uuid-1'));
+        $this->assertEquals(1, $eloquentStoredEventRepository->getLatestAggregateVersion('1537200202186751'));
 
-        $anotherAggregateRoot = AccountAggregateRoot::retrieve('uuid-2');
+        $aggregateRoot->addMoney(100)->persist();
+        $this->assertEquals(2, $eloquentStoredEventRepository->getLatestAggregateVersion('1537200202186751'));
+
+        $anotherAggregateRoot = AccountAggregateRoot::retrieve('1537200202186752');
         $anotherAggregateRoot->addMoney(100)->persist();
-        $this->assertEquals(1, $eloquentStoredEventRepository->getLatestAggregateVersion('uuid-2'));
-        $this->assertEquals(2, $eloquentStoredEventRepository->getLatestAggregateVersion('uuid-1'));
+        $this->assertEquals(1, $eloquentStoredEventRepository->getLatestAggregateVersion('1537200202186752'));
+        $this->assertEquals(2, $eloquentStoredEventRepository->getLatestAggregateVersion('1537200202186751'));
     }
 
     /** @test */
@@ -36,7 +36,7 @@ class EloquentStoredEventRepositoryTest extends TestCase
         $eloquentStoredEventRepository = app(EloquentStoredEventRepository::class);
 
         $originalEvent = new MoneyAdded(100);
-        $storedEvent = $eloquentStoredEventRepository->persist($originalEvent, 'uuid-1', 1);
+        $storedEvent = $eloquentStoredEventRepository->persist($originalEvent, '1537200202186751', 1);
 
         $this->assertSame($originalEvent, $storedEvent->event);
     }

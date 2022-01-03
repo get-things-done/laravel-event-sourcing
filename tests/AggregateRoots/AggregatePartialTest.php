@@ -11,7 +11,7 @@ use Spatie\EventSourcing\Tests\TestCase;
 
 class AggregatePartialTest extends TestCase
 {
-    protected const CART_UUID = 'cart-uuid';
+    protected const CART_UUID = '1537200202186752';
 
     /** @test */
     public function test_entities()

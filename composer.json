@@ -23,6 +23,7 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*",
+        "godruoyi/php-snowflake": "^2.0",
         "illuminate/console": "^8.67",
         "illuminate/database": "^8.67",
         "illuminate/events": "^8.67",
@@ -60,7 +61,7 @@
     },
     "scripts": {
         "psalm": "vendor/bin/psalm",
-        "test": "vendor/bin/phpunit",
+        "test": "vendor/bin/phpunit --stop-on-failure",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {

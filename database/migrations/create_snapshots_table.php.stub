@@ -10,7 +10,7 @@ class CreateSnapshotsTable extends Migration
     {
         Schema::create('snapshots', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->uuid('aggregate_uuid');
+            $table->unsignedBigInteger('aggregate_uuid');
             $table->unsignedInteger('aggregate_version');
             $table->jsonb('state');
 

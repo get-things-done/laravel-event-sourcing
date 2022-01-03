@@ -13,12 +13,12 @@ class EventHasMetaDataTest extends TestCase
     {
         Projectionist::addProjector(GetMetaDataProjector::class);
 
-        $aggregateRoot = DummyAggregateRoot::retrieve('my-uuid');
+        $aggregateRoot = DummyAggregateRoot::retrieve('153720020218675');
 
         $aggregateRoot->dummy();
 
         $aggregateRoot->persist();
 
-        $this->assertEquals('my-uuid', GetMetaDataProjector::$foundAggregateRootUuid);
+        $this->assertEquals('153720020218675', GetMetaDataProjector::$foundAggregateRootUuid);
     }
 }

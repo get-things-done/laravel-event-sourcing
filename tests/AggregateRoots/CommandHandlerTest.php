@@ -12,7 +12,7 @@ use Spatie\EventSourcing\Tests\TestCase;
 
 class CommandHandlerTest extends TestCase
 {
-    protected const UUID = 'cart-uuid';
+    protected const UUID = '1537200202186752';
 
     /** @test */
     public function command_is_dispatched_to_aggregate()

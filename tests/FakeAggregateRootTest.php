@@ -16,7 +16,7 @@ class FakeAggregateRootTest extends TestCase
     /** @test */
     public function it_can_retrieve_an_aggregate_for_a_given_uuid()
     {
-        $fakeUuid = 'fake-uuid';
+        $fakeUuid = '153720020218675';
 
         $realAggregateRoot = DummyAggregateRoot::fake($fakeUuid)->aggregateRoot();
 

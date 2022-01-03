@@ -21,6 +21,7 @@ class EloquentStoredEvent extends Model
     protected $table = 'stored_events';
 
     public $casts = [
+        'aggregate_uuid' => 'int',
         'event_properties' => 'array',
         'meta_data' => 'array',
     ];
@@ -32,7 +33,7 @@ class EloquentStoredEvent extends Model
         return new StoredEvent([
             'id' => $this->id,
             'event_properties' => $this->event_properties,
-            'aggregate_uuid' => $this->aggregate_uuid ?? '',
+            'aggregate_uuid' => $this->aggregate_uuid ?? 0,
             'aggregate_version' => $this->aggregate_version ?? 0,
             'event_version' => $this->event_version,
             'event_class' => $this->event_class,
@@ -76,5 +77,10 @@ class EloquentStoredEvent extends Model
         }
 
         return $this->meta_data->modelScope();
+    }
+
+    public function setAggregateUuidAttribute($value)
+    {
+        $this->aggregate_uuid = (int) $value;
     }
 }

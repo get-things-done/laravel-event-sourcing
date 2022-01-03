@@ -2,13 +2,16 @@
 
 namespace Spatie\EventSourcing\Tests\TestClasses;
 
+use Godruoyi\Snowflake\Snowflake;
+
 class FakeUuid
 {
     protected static int $count = 1;
 
     public static function generate()
     {
-        return '594713b3-0000-4000-b300-'.sprintf('%012d', self::$count++);
+
+        return '153720020218'.sprintf('%04d', self::$count++);
     }
 
     public static function reset()

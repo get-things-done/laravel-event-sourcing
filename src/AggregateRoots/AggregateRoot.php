@@ -283,7 +283,7 @@ abstract class AggregateRoot
 
     public static function fake(string $uuid = null): FakeAggregateRoot
     {
-        $uuid ??= (string) Str::uuid();
+        $uuid ??= 1537200202186752;
 
         $aggregateRoot = app(static::class)->disableEventHandling();
         $aggregateRoot->uuid = $uuid;
