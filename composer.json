@@ -1,5 +1,5 @@
 {
-    "name": "spatie/laravel-event-sourcing",
+    "name": "get-things-done/laravel-event-sourcing",
     "description": "The easiest way to get started with event sourcing in Laravel",
     "keywords": [
         "spatie",
